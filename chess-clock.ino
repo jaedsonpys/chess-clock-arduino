@@ -1,3 +1,5 @@
+#include <LiquidCrystal_I2C.h>
+
 const int ledOnePin = 7;
 const int ledTwoPin = 8;
 const int buzzerPin = 5;
@@ -15,9 +17,19 @@ int previousTime = 0;
 void changePlayer();
 void finishGame();
 
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
 void setup() {
   // put your setup code here, to run once:]
   Serial.begin(9600);
+  
+  lcd.init();
+  lcd.backlight();
+
+  lcd.setCursor(0, 0);
+  lcd.print("Chess clock");
+  lcd.setCursor(0, 1);
+  lcd.print("Start.");
   
   pinMode(ledOnePin, OUTPUT);
   pinMode(ledTwoPin, OUTPUT);
