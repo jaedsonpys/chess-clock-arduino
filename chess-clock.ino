@@ -3,7 +3,7 @@ const int ledTwoPin = 8;
 const int buzzerPin = 5;
 
 const int buttonOnePin = 2;
-const int buttonTwoPin = 13;
+const int buttonTwoPin = 12;
 
 int playerOneMillis = 0;
 int playerTwoMillis = 0;
