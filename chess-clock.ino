@@ -57,6 +57,11 @@ void loop() {
 
       previousTime = currentMillis;
     }
+
+    if(playerOneTime == 0 || playerTwoTime == 0){
+      finishGame();
+      break;
+    }
     
     if(!digitalRead(buttonOnePin) && currentPlayer == 1) {
       changePlayer();
