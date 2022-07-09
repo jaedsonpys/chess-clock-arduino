@@ -12,7 +12,6 @@ long int gameTime = 180000;
 int currentPlayer = 0;
 int previousTime = 0;
 
-int getTime(int player);
 void changePlayer();
 void finishGame();
 
@@ -72,18 +71,6 @@ void loop() {
       changePlayer();
     }
   }
-}
-
-int getTime(int player) {
-  int finalTime;
-  
-  if(player == 1){
-    finalTime = (gameTimeMillis - playerOneMillis) / 1000;
-  } else if(player == 2) {
-    finalTime = (gameTimeMillis - playerTwoMillis) / 1000;
-  }
-
-  return finalTime;
 }
 
 void changePlayer() {
