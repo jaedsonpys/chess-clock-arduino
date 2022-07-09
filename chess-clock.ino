@@ -7,6 +7,7 @@ const int buttonTwoPin = 13;
 
 int playerOneMillis = 0;
 int playerTwoMillis = 0;
+int startedUser = 0;
 
 const int gameTimeMillis = 180000;  // 3 minutes
 
@@ -14,7 +15,11 @@ int getTime(int player);
 
 void setup() {
   // put your setup code here, to run once:
-
+  pinMode(ledOnePin, OUTPUT);
+  pinMode(ledTwoPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(buttonOnePin, INPUT_PULLUP);
+  pinMode(buttonTwoPin, INPUT_PULLUP);
 }
 
 void loop() {
