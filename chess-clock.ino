@@ -16,6 +16,7 @@ int previousTime = 0;
 
 void changePlayer();
 void finishGame();
+void printTime();
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
@@ -69,6 +70,7 @@ void loop() {
         Serial.print("Player 2: "); Serial.println(playerTwoMillis);
       }
 
+      printTime();
       previousTime = currentMillis;
     }
 
@@ -124,5 +126,21 @@ void finishGame() {
     delay(300);
     digitalWrite(ledTwoPin, LOW);
     noTone(buzzerPin);
+  }
+}
+
+void printTime() {
+  lcd.clear();
+  
+  if(currentPlayer == 1) {
+    lcd.setCursor(0, 0);
+    lcd.print("Player 1");
+    lcd.setCursor(0, 1);
+    lcd.print(playerOneMillis / 1000);
+  } else if(currentPlayer == 2) {
+    lcd.setCursor(0, 0);
+    lcd.print("Player 2");
+    lcd.setCursor(0, 1);
+    lcd.print(playerTwoMillis / 1000);
   }
 }
