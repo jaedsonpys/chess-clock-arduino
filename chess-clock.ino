@@ -7,11 +7,14 @@ const int buttonTwoPin = 13;
 
 int playerOneMillis = 0;
 int playerTwoMillis = 0;
-int startedUser = 0;
+
+int currentPlayer = 0;
+int startedPlayer = 0;
 
 const int gameTimeMillis = 180000;  // 3 minutes
 
 int getTime(int player);
+void changePlayer();
 
 void setup() {
   // put your setup code here, to run once:
@@ -37,4 +40,18 @@ int getTime(int player) {
   }
 
   return finalTime;
+}
+
+void changePlayer() {
+  if(startedPlayer == 1){
+    digitalWrite(ledTwoPin, HIGH);
+    digitalWrite(ledOnePin, LOW);
+    currentPlayer = 2;
+  } else if(startedPlayer == 2){
+    digitalWrite(ledOnePin, HIGH);
+    digitalWrite(ledTwoPin, LOW);
+    currentPlayer = 1;
+  }
+
+  tone(buzzerPin, 1200, 150);
 }
