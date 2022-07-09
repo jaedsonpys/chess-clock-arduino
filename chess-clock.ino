@@ -5,10 +5,11 @@ const int buzzerPin = 5;
 const int buttonOnePin = 2;
 const int buttonTwoPin = 12;
 
-int playerOneMillis = 0;
-int playerTwoMillis = 0;
+unsigned long int playerOneMillis = 180000;
+unsigned long int playerTwoMillis = 180000;
 int currentPlayer = 0;
 
+int previousTime = 0;
 const int gameTimeMillis = 180000;  // 3 minutes
 
 int getTime(int player);
@@ -44,6 +45,19 @@ void loop() {
   changePlayer();
   
   while(true) {
+    int currentMillis = millis();
+    if(currentMillis - previousTime >= 1000) {
+      if(currentPlayer == 1) {
+        playerOneMillis = playerOneMillis - 1000;
+        Serial.print("Player 1: "); Serial.println(playerOneMillis);
+      } else if(currentPlayer == 2){
+        playerTwoMillis = playerTwoMillis - 1000;
+        Serial.print("Player 2: "); Serial.println(playerTwoMillis);
+      }
+
+      previousTime = currentMillis;
+    }
+    
     if(!digitalRead(buttonOnePin) && currentPlayer == 1) {
       changePlayer();
     } else if(!digitalRead(buttonTwoPin) && currentPlayer == 2) {
