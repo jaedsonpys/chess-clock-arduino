@@ -42,8 +42,8 @@ void loop() {
     }
   }
 
-  playerOneTime = gameTime;
-  playerTwoTime = gameTime;
+  playerOneMillis = gameTime;
+  playerTwoMillis = gameTime;
   
   changePlayer();
   
@@ -61,7 +61,7 @@ void loop() {
       previousTime = currentMillis;
     }
 
-    if(playerOneTime == 0 || playerTwoTime == 0){
+    if(playerOneMillis == 0 || playerTwoMillis == 0){
       finishGame();
       break;
     }
