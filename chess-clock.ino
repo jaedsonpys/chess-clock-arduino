@@ -7,10 +7,9 @@ const int buttonTwoPin = 12;
 
 unsigned long int playerOneMillis = 180000;
 unsigned long int playerTwoMillis = 180000;
-int currentPlayer = 0;
 
+int currentPlayer = 0;
 int previousTime = 0;
-const int gameTimeMillis = 180000;  // 3 minutes
 
 int getTime(int player);
 void changePlayer();
