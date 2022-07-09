@@ -14,6 +14,7 @@ long int gameTime = 180000;
 int currentPlayer = 0;
 int previousTime = 0;
 
+void startGame();
 void changePlayer();
 void finishGame();
 void printTime();
@@ -38,12 +39,13 @@ void setup() {
   pinMode(buttonOnePin, INPUT_PULLUP);
   pinMode(buttonTwoPin, INPUT_PULLUP);
 
-  digitalWrite(ledOnePin, HIGH);
-  digitalWrite(ledTwoPin, HIGH);
+  startGame();
 }
 
 void loop() {
   // wait start player
+  startGame();
+  
   while(true) {
     if(digitalRead(buttonOnePin) == LOW) {
       currentPlayer = 1;
@@ -143,4 +145,15 @@ void printTime() {
     lcd.setCursor(0, 1);
     lcd.print(playerTwoMillis / 1000);
   }
+}
+
+void startGame() {
+  digitalWrite(ledOnePin, HIGH);
+  digitalWrite(ledTwoPin, HIGH);
+  
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Chess clock");
+  lcd.setCursor(0, 1);
+  lcd.print("Start.");
 }
