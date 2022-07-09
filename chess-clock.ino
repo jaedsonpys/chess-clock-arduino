@@ -27,7 +27,9 @@ void setup() {
 
   digitalWrite(ledOnePin, HIGH);
   digitalWrite(ledTwoPin, HIGH);
+}
 
+void loop() {
   // wait start player
   while(true) {
     if(digitalRead(buttonOnePin) == LOW) {
@@ -38,10 +40,7 @@ void setup() {
       break;
     }
   }
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
+  
   changePlayer();
   
   while(true) {
