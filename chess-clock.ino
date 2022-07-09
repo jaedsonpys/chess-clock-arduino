@@ -5,8 +5,9 @@ const int buzzerPin = 5;
 const int buttonOnePin = 2;
 const int buttonTwoPin = 12;
 
-unsigned long int playerOneMillis = 180000;
-unsigned long int playerTwoMillis = 180000;
+unsigned long int playerOneMillis = 0;
+unsigned long int playerTwoMillis = 0;
+long int gameTime = 180000;
 
 int currentPlayer = 0;
 int previousTime = 0;
@@ -40,6 +41,9 @@ void loop() {
       break;
     }
   }
+
+  playerOneTime = gameTime;
+  playerTwoTime = gameTime;
   
   changePlayer();
   
