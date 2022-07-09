@@ -41,7 +41,15 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  changePlayer();
   
+  while(true) {
+    if(!digitalRead(buttonOnePin) && currentPlayer == 1) {
+      changePlayer();
+    } else if(!digitalRead(buttonTwoPin) && currentPlayer == 2) {
+      changePlayer();
+    }
+  }
 }
 
 int getTime(int player) {
