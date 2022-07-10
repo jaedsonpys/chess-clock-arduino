@@ -74,11 +74,11 @@ void loop() {
 
       printTime();
       previousTime = currentMillis;
-    }
 
-    if(playerOneMillis == 0 || playerTwoMillis == 0){
-      finishGame();
-      break;
+      if(playerOneMillis < 1000 || playerTwoMillis < 0){
+        finishGame();
+        break;
+      }
     }
     
     if(!digitalRead(buttonOnePin) && currentPlayer == 1) {
