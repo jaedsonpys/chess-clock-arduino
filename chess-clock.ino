@@ -6,6 +6,7 @@ const int buzzerPin = 5;
 
 const int buttonOnePin = 2;
 const int buttonTwoPin = 12;
+const int potPin = A0;
 
 unsigned long int playerOneMillis = 0;
 unsigned long int playerTwoMillis = 0;
@@ -38,8 +39,7 @@ void setup() {
   pinMode(buzzerPin, OUTPUT);
   pinMode(buttonOnePin, INPUT_PULLUP);
   pinMode(buttonTwoPin, INPUT_PULLUP);
-
-  startGame();
+  pinMode(potPin, INPUT);
 }
 
 void loop() {
@@ -148,6 +148,23 @@ void printTime() {
 }
 
 void startGame() {
+  // set game time
+  while(true) {
+    int potValue = analogRead(potPin);
+    gameTime = map(potValue, 0, 673, 0, 600000);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Set game time");
+    lcd.setCursor(0, 1);
+    lcd.print(gameTime / 1000);
+
+    if(!digitalRead(buttonOnePin) || !digitalRead(buttonTwoPin)) {
+      break;
+    }
+    
+    delay(500);
+  }
+  
   digitalWrite(ledOnePin, HIGH);
   digitalWrite(ledTwoPin, HIGH);
   
@@ -156,4 +173,5 @@ void startGame() {
   lcd.print("Chess clock");
   lcd.setCursor(0, 1);
   lcd.print("Start.");
+  delay(1000);
 }
