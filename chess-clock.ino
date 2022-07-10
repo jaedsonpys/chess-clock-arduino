@@ -102,7 +102,14 @@ void changePlayer() {
 }
 
 void finishGame() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("End game:");
+  
   if(currentPlayer == 1){
+    lcd.setCursor(0, 1);
+    lcd.print("Player 1 lost");
+    
     digitalWrite(ledOnePin, HIGH);
     tone(buzzerPin, 1200);
     delay(300);
@@ -121,6 +128,9 @@ void finishGame() {
     digitalWrite(ledOnePin, LOW);
     noTone(buzzerPin);
   } else if(currentPlayer == 2){
+    lcd.setCursor(0, 1);
+    lcd.print("Player 2 lost");
+    
     digitalWrite(ledTwoPin, HIGH);
     tone(buzzerPin, 1200);
     delay(300);
