@@ -73,7 +73,7 @@ void loop() {
       printTime();
       previousTime = currentMillis;
 
-      if(playerOneMillis < 1000 || playerTwoMillis < 0){
+      if(playerOneMillis < 1000 || playerTwoMillis < 1000){
         finishGame();
         break;
       }
