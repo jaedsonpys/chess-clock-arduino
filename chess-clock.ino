@@ -6,7 +6,6 @@ const int buzzerPin = 5;
 
 const int buttonOnePin = 2;
 const int buttonTwoPin = 12;
-const int potPin = A0;
 
 unsigned long int playerOneMillis = 0;
 unsigned long int playerTwoMillis = 0;
@@ -39,7 +38,6 @@ void setup() {
   pinMode(buzzerPin, OUTPUT);
   pinMode(buttonOnePin, INPUT_PULLUP);
   pinMode(buttonTwoPin, INPUT_PULLUP);
-  pinMode(potPin, INPUT);
 }
 
 void loop() {
@@ -162,19 +160,29 @@ void printTime() {
 void startGame() {
   // set game time
   while(true) {
-    int potValue = analogRead(potPin);
-    gameTime = map(potValue, 0, 673, 0, 600000);
     lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print("Set game time");
+    lcd.print("Set game time:");
     lcd.setCursor(0, 1);
     lcd.print(gameTime / 1000);
+    lcd.setCursor(4, 1);
+    lcd.print("seconds");
 
-    if(!digitalRead(buttonOnePin) || !digitalRead(buttonTwoPin)) {
+    if(!digitalRead(buttonOnePin) && !digitalRead(buttonTwoPin)) {
       break;
+    } else if(!digitalRead(buttonOnePin)) {
+      // increase time
+      if(gameTime != 600000) {
+        gameTime += 10000;
+      }
+    } else if(!digitalRead(buttonTwoPin)) {
+      // decrease time
+      if(gameTime != 10000) {
+        gameTime -= 10000;
+      }
     }
     
-    delay(500);
+    delay(100);
   }
   
   digitalWrite(ledOnePin, HIGH);
