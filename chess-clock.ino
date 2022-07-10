@@ -116,7 +116,19 @@ void finishGame() {
     delay(300);
     digitalWrite(ledOnePin, LOW);
     noTone(buzzerPin);
+    delay(300);
+    digitalWrite(ledOnePin, HIGH);
+    tone(buzzerPin, 1200);
+    delay(300);
+    digitalWrite(ledOnePin, LOW);
+    noTone(buzzerPin);
   } else if(currentPlayer == 2){
+    digitalWrite(ledTwoPin, HIGH);
+    tone(buzzerPin, 1200);
+    delay(300);
+    digitalWrite(ledTwoPin, LOW);
+    noTone(buzzerPin);
+    delay(300);
     digitalWrite(ledTwoPin, HIGH);
     tone(buzzerPin, 1200);
     delay(300);
