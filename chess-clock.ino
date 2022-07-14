@@ -56,7 +56,8 @@ void loop() {
 
   playerOneMillis = gameTime;
   playerTwoMillis = gameTime;
-  
+
+  lcd.clear();
   changePlayer();
   
   while(true) {
@@ -153,18 +154,14 @@ void finishGame() {
 
 void printTime() {
   lcd.clear();
-  
-  if(currentPlayer == 1) {
-    lcd.setCursor(0, 0);
-    lcd.print("Player 1");
-    lcd.setCursor(0, 1);
-    lcd.print(playerOneMillis / 1000);
-  } else if(currentPlayer == 2) {
-    lcd.setCursor(0, 0);
-    lcd.print("Player 2");
-    lcd.setCursor(0, 1);
-    lcd.print(playerTwoMillis / 1000);
-  }
+  lcd.setCursor(0, 0);
+  lcd.print("1:");
+  lcd.setCursor(3, 0);
+  lcd.print(playerOneMillis / 1000);
+  lcd.setCursor(0, 1);
+  lcd.print("2:");
+  lcd.setCursor(3, 1);
+  lcd.print(playerTwoMillis / 1000);
 }
 
 void startGame() {
