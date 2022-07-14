@@ -79,8 +79,12 @@ void loop() {
         break;
       }
     }
-    
-    if(!digitalRead(buttonOnePin) && currentPlayer == 1) {
+
+    if(!digitalRead(buttonOnePin) && !digitalRead(buttonTwoPin)) {
+      // game cancelled
+      while(!digitalRead(buttonOnePin) && !digitalRead(buttonTwoPin));
+      break;
+    } else if(!digitalRead(buttonOnePin) && currentPlayer == 1) {
       changePlayer();
     } else if(!digitalRead(buttonTwoPin) && currentPlayer == 2) {
       changePlayer();
